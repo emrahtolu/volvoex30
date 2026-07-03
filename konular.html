@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tüm Başlıklar — EX30 Rehber</title>
+<style>
+/* ========================================================
+   EX30 Rehber — Ortak Stil Sistemi v2
+   Modern, yuvarlak köşeli "infografik" estetiği
+   ======================================================== */
+:root{
+  --navy:#0d1b3d;
+  --navy-2:#152a55;
+  --ink:#1c2434;
+  --bg:#eef1f5;
+  --card:#ffffff;
+  --line:#e2e6ee;
+  --muted:#6b7280;
+  --blue:#4c7ed6;
+  --blue-soft:#dde8fb;
+  --green:#3fa876;
+  --green-soft:#dcf3e8;
+  --orange:#f0a53e;
+  --orange-soft:#fdecd2;
+  --red:#e2694f;
+  --red-soft:#fbe3dd;
+  --sans:"Inter","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --head:"Poppins","Segoe UI","Inter",Arial,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  --radius:20px;
+  --radius-sm:12px;
+  --shadow:0 10px 30px rgba(13,27,61,0.07);
+  --shadow-hover:0 18px 40px rgba(13,27,61,0.13);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;}
+img{max-width:100%; display:block;}
+
+/* ---------- TOP NAV ---------- */
+.topnav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(238,241,245,0.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topnav-inner{
+  max-width:1200px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 24px;
+}
+.brand{
+  display:flex; align-items:center; gap:10px;
+  color:var(--navy); text-decoration:none;
+  font-family:var(--head); font-weight:700; font-size:19px;
+}
+.brand .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--green)); display:inline-block;}
+.navlinks{display:flex; gap:4px; flex-wrap:wrap;}
+.navlinks a{
+  color:var(--muted); text-decoration:none; font-size:14px;
+  padding:9px 14px; border-radius:100px;
+  font-family:var(--sans); font-weight:600;
+  transition:background .15s, color .15s;
+}
+.navlinks a:hover{ background:#fff; color:var(--navy);}
+.navlinks a.active{ background:var(--navy); color:#fff;}
+@media (max-width:840px){
+  .topnav-inner{flex-direction:column; align-items:flex-start; gap:10px;}
+  .navlinks{width:100%; overflow-x:auto; flex-wrap:nowrap; padding-bottom:2px;}
+  .navlinks a{white-space:nowrap;}
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 60%, #1d3766 100%);
+  color:#f3f5fa;
+  padding:64px 24px 100px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute; right:-160px; top:-160px;
+  width:480px; height:480px; border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, rgba(76,126,214,0.35), transparent 70%);
+}
+.hero::after{
+  content:"";
+  position:absolute; left:-120px; bottom:-160px;
+  width:400px; height:400px; border-radius:50%;
+  background:radial-gradient(circle at 60% 60%, rgba(63,168,118,0.25), transparent 70%);
+}
+.hero-inner{max-width:1200px; margin:0 auto; position:relative; z-index:2;}
+.eyebrow{
+  font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  color:#9fb0d6; margin-bottom:18px;
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(255,255,255,0.08); padding:6px 14px; border-radius:100px;
+}
+h1{
+  font-family:var(--head); font-weight:700;
+  font-size:clamp(32px,4.8vw,54px);
+  margin:0 0 16px; letter-spacing:-0.02em; max-width:820px;
+}
+.hero p.lead{ max-width:620px; color:#c7d0e6; font-size:17px; margin:0; }
+.hero.small{padding:44px 24px 64px;}
+.hero.small h1{font-size:clamp(26px,4vw,38px);}
+
+/* ---------- SEARCH ---------- */
+.search-wrap{ max-width:680px; position:relative; margin-top:30px;}
+#searchInput, #homeSearch{
+  width:100%; padding:18px 132px 18px 24px; font-size:15.5px;
+  border-radius:100px; border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.08); color:#fff; font-family:var(--sans);
+}
+#searchInput::placeholder, #homeSearch::placeholder{color:#93a0c2;}
+#searchInput:focus, #homeSearch:focus{outline:2px solid var(--orange); outline-offset:2px;}
+#searchBtn{
+  position:absolute; right:6px; top:6px; bottom:6px; padding:0 24px;
+  background:linear-gradient(135deg,var(--orange),#e08a2b); color:#2b1a04; border:none; border-radius:100px;
+  font-family:var(--sans); font-size:13.5px; font-weight:700;
+  cursor:pointer;
+}
+#searchBtn:hover{filter:brightness(1.06);}
+.search-meta{ margin-top:12px; font-family:var(--mono); font-size:12px; color:#93a0c2;}
+
+/* ---------- STAT CARDS (gauge style, homepage) ---------- */
+.stat-row{
+  max-width:1200px; margin:-56px auto 0; padding:0 24px; position:relative; z-index:5;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;
+}
+.stat-card{
+  background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+  padding:24px 22px; display:flex; flex-direction:column; gap:6px;
+}
+.stat-card .ring{
+  width:56px; height:56px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:6px;
+}
+.stat-card .ring svg{width:56px; height:56px;}
+.stat-card .num{ font-family:var(--head); font-weight:700; font-size:26px; color:var(--navy); letter-spacing:-0.01em;}
+.stat-card .label{ font-family:var(--sans); font-weight:600; font-size:13.5px; color:var(--ink);}
+.stat-card .desc{ font-family:var(--sans); font-size:12.5px; color:var(--muted); line-height:1.5;}
+.stat-card.disclaimed{border:1px dashed #d8b978;}
+.stat-disclaimer{
+  font-family:var(--mono); font-size:10.5px; color:var(--orange); margin-top:4px;
+  text-transform:uppercase; letter-spacing:.04em;
+}
+
+/* ---------- MAIN CONTAINER ---------- */
+main{ max-width:1200px; margin:0 auto; padding:56px 24px 100px;}
+.section-label{
+  font-family:var(--head); font-size:22px; font-weight:700; color:var(--navy);
+  margin:64px 0 6px; display:flex; align-items:center; gap:12px;
+}
+.section-label .num-chip{
+  font-family:var(--mono); font-size:11px; color:#fff; background:var(--blue);
+  border-radius:100px; padding:3px 10px;
+}
+.section-intro{color:var(--muted); font-size:14.5px; margin:0 0 26px; max-width:760px;}
+
+/* ---------- CARD GRID (category tiles) ---------- */
+.tile-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:18px; }
+.tile{
+  background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+  padding:26px; text-decoration:none; color:var(--ink);
+  display:flex; flex-direction:column; gap:10px;
+  transition:transform .18s ease, box-shadow .18s ease;
+  border:1px solid transparent;
+}
+.tile:hover{ transform:translateY(-4px); box-shadow:var(--shadow-hover);}
+.tile .icon-badge{
+  width:46px; height:46px; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--blue-soft);
+}
+.tile .icon-badge img{width:24px; height:24px;}
+.tile h3{ font-family:var(--head); font-weight:700; font-size:18px; margin:4px 0 0; color:var(--navy);}
+.tile p{ font-size:13.5px; color:var(--muted); margin:0; }
+.tile .count{
+  font-family:var(--mono); font-size:11px; color:var(--blue);
+  text-transform:uppercase; letter-spacing:.06em; margin-top:auto; padding-top:10px;
+}
+
+/* colored tile variants */
+.tile:nth-child(6n+1) .icon-badge{background:var(--blue-soft);}
+.tile:nth-child(6n+2) .icon-badge{background:var(--green-soft);}
+.tile:nth-child(6n+3) .icon-badge{background:var(--orange-soft);}
+.tile:nth-child(6n+4) .icon-badge{background:var(--red-soft);}
+.tile:nth-child(6n+5) .icon-badge{background:var(--blue-soft);}
+.tile:nth-child(6n+6) .icon-badge{background:var(--green-soft);}
+
+/* ---------- CONTENT CARDS (FAQ style) ---------- */
+.cards{ display:grid; grid-template-columns:1fr; gap:18px; }
+.card{
+  background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+  padding:30px 32px;
+  scroll-margin-top:100px;
+}
+.card.hidden{display:none;}
+.card h3{ font-family:var(--head); font-size:21px; margin:0 0 6px; font-weight:700; color:var(--navy);}
+.card .tag{
+  font-family:var(--mono); font-size:11px; color:var(--blue); text-transform:uppercase;
+  letter-spacing:.06em; margin-bottom:16px; display:inline-block;
+  background:var(--blue-soft); padding:4px 12px; border-radius:100px; font-weight:600;
+}
+.card .tag.tag-warn{background:var(--red-soft); color:#b6402a;}
+.card .tag.tag-new{background:var(--green-soft); color:#227a52;}
+.card p{margin:0 0 12px; font-size:15px; color:#333c4d;}
+.card ul, .card ol{margin:0 0 14px; padding-left:20px; font-size:15px; color:#333c4d;}
+.card li{margin-bottom:7px;}
+.card table{width:100%; border-collapse:collapse; margin:12px 0 16px; font-size:14.5px;}
+.card table td, .card table th{padding:10px 8px; border-bottom:1px solid var(--line); text-align:left;}
+.card .note{ border-radius:var(--radius-sm); border-left:4px solid var(--orange); background:var(--orange-soft); padding:14px 18px; font-size:13.5px; color:#7a5410; margin-top:16px;}
+.card .warn{ border-radius:var(--radius-sm); border-left:4px solid var(--red); background:var(--red-soft); padding:14px 18px; font-size:13.5px; color:#8a3418; margin-top:16px;}
+.card .safety{ border-radius:var(--radius-sm); border-left:4px solid var(--navy); background:#eef1f7; padding:14px 18px; font-size:13.5px; color:var(--navy-2); margin-top:16px;}
+.card .src{ margin-top:18px; font-family:var(--mono); font-size:11.5px; color:#9aa1b3;}
+.card figure{margin:18px 0; border-radius:var(--radius-sm); overflow:hidden; border:1px solid var(--line);}
+.card figure img{display:block; width:100%;}
+.card figcaption{font-family:var(--mono); font-size:11px; color:var(--muted); padding:10px 14px; background:#f7f8fb;}
+
+/* pros/cons */
+.proscons{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:16px 0;}
+.proscons .pros, .proscons .cons{padding:18px 20px; border-radius:var(--radius-sm);}
+.proscons .pros{background:var(--green-soft);}
+.proscons .cons{background:var(--red-soft);}
+.proscons h4{margin:0 0 10px; font-family:var(--head); font-size:13px; text-transform:uppercase; letter-spacing:.04em;}
+.proscons ul{margin:0; padding-left:18px; font-size:13.5px;}
+.proscons li{margin-bottom:7px;}
+@media (max-width:700px){ .proscons{grid-template-columns:1fr;} }
+
+/* ---------- KATEGORİ SAYFASI ---------- */
+.cat-block{ margin-bottom:48px; }
+.cat-head{ display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.cat-head .icon-badge{width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:var(--blue-soft); flex-shrink:0;}
+.cat-head .icon-badge img{width:24px; height:24px;}
+.cat-head h2{ font-family:var(--head); font-size:22px; margin:0; color:var(--navy); font-weight:700;}
+.cat-head span.count{font-family:var(--mono); font-size:12px; color:var(--muted); margin-left:auto;}
+.topic-list{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:10px;}
+.topic-list li{ background:var(--card); border-radius:var(--radius-sm); box-shadow:var(--shadow);}
+.topic-list a{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:15px 18px; text-decoration:none; color:var(--ink); font-size:14px; font-weight:500;
+}
+.topic-list a:hover{color:var(--blue);}
+.topic-list a::after{content:"→"; color:var(--muted); font-size:13px;}
+.topic-list a:hover::after{color:var(--blue);}
+
+/* ---------- FOOTER ---------- */
+footer{ background:var(--navy); color:#93a0c2; padding:44px 24px; font-size:13px; text-align:center; font-family:var(--sans);}
+footer a{color:#dde8fb; text-decoration:underline;}
+footer .foot-links{margin-bottom:16px; display:flex; gap:20px; justify-content:center; flex-wrap:wrap;}
+footer .foot-links a{text-decoration:none; color:#fff; font-weight:600;}
+
+#noResults{ display:none; text-align:center; padding:70px 20px; color:var(--muted); font-family:var(--mono); font-size:14px;}
+mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
+
+/* verdict / quote dark block */
+.verdict{
+  background:linear-gradient(160deg,var(--navy),#1d3766);
+  color:#fff; border-radius:var(--radius); padding:44px 40px; text-align:center;
+  margin:64px 0 0;
+}
+.verdict blockquote{
+  font-family:var(--head); font-weight:700; font-size:clamp(20px,3vw,30px);
+  margin:0 0 16px; letter-spacing:-0.01em;
+}
+.verdict p{color:#c7d0e6; font-size:14px; max-width:640px; margin:0 auto;}
+
+.img-note{
+  border-radius:var(--radius-sm); border:1px dashed #c7c1b4; background:#f7f5f0; color:var(--muted);
+  font-family:var(--mono); font-size:11.5px; padding:16px; text-align:center;
+}
+
+@media (max-width:720px){
+  .hero{padding:48px 18px 80px;}
+  #searchInput, #homeSearch{padding:16px 100px 16px 18px;}
+  #searchBtn{padding:0 14px; font-size:11.5px;}
+  .card{padding:22px 20px;}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html"><span class="dot"></span> EX30 Rehber</a>
+    <div class="navlinks">
+      <a href="index.html">Anasayfa</a>
+      <a href="konular.html" class="active">Başlıklar</a>
+      <a href="rehber.html">Detaylı Rehber</a>
+      <a href="topluluk.html">Topluluk Özeti</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero small">
+  <div class="hero-inner">
+    <div class="eyebrow">● Kategorize İçerik Haritası</div>
+    <h1>Tüm Başlıklar</h1>
+    <p class="lead">Rehberdeki tüm konular, ilişkili oldukları kategoriye göre gruplanmış olarak aşağıda listeleniyor. Bir başlığa tıkladığınızda doğrudan detaylı rehberdeki ilgili karta gidersiniz.</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="cat-block">
+    <div class="cat-head">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iNyIgeT0iOSIgd2lkdGg9IjM0IiBoZWlnaHQ9IjI0IiByeD0iMiIgc3Ryb2tlPSIjMGQxYjNkIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTkgMzloMTBNMjQgMzN2NiIgc3Ryb2tlPSIjMGQxYjNkIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTUgMjRsNC00LTQtNE0yNyAxNmg2IiBzdHJva2U9IiM0YzdlZDYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+Cg==" alt=""></div>
+      <h2>Yazılım &amp; Bağlantı</h2>
+      <span class="count">5 başlık</span>
+    </div>
+    <ul class="topic-list">
+      <li><a href="rehber.html#yazilim">Yazılım güncellemesi nasıl yapılır?</a></li>
+      <li><a href="rehber.html#yazilim">Ses kesilmesi — resmi geri çağırma kapsamında</a></li>
+      <li><a href="rehber.html#yazilim">Gemini yapay zekâ asistanı nasıl aktif edilir?</a></li>
+      <li><a href="rehber.html#yazilim">Bluetooth / kablosuz CarPlay bağlantı sorunları</a></li>
+      <li><a href="rehber.html#yazilim">Dijital anahtar / NFC kart sorunları</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-head">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iNiIgeT0iMTQiIHdpZHRoPSIzMiIgaGVpZ2h0PSIyMiIgcng9IjIiIHN0cm9rZT0iIzBkMWIzZCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHJlY3QgeD0iNDAiIHk9IjIxIiB3aWR0aD0iNCIgaGVpZ2h0PSI4IiByeD0iMSIgZmlsbD0iIzBkMWIzZCIvPjxyZWN0IHg9IjExIiB5PSIxOSIgd2lkdGg9IjgiIGhlaWdodD0iMTIiIGZpbGw9IiM0YzdlZDYiLz48cmVjdCB4PSIyMSIgeT0iMTkiIHdpZHRoPSI4IiBoZWlnaHQ9IjEyIiBmaWxsPSIjNGM3ZWQ2IiBvcGFjaXR5PSIwLjU1Ii8+PC9zdmc+Cg==" alt=""></div>
+      <h2>Şarj &amp; Batarya</h2>
+      <span class="count">5 başlık</span>
+    </div>
+    <ul class="topic-list">
+      <li><a href="rehber.html#sarj">Günlük kullanımda %kaç şarj edilmeli?</a></li>
+      <li><a href="rehber.html#sarj">Uzun süre kullanılmayacaksa şarj aralığı</a></li>
+      <li><a href="rehber.html#sarj">Batarya geri çağırma — gerçek kapsam ve Türkiye durumu</a></li>
+      <li><a href="rehber.html#sarj">AC/DC şarj hızı gerçekleri</a></li>
+      <li><a href="rehber.html#sarj">"Akü düşük" uyarısı ve 12V akü davranışı</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-head">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMiIgcj0iMy41IiBzdHJva2U9IiMwZDFiM2QiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjM4IiBjeT0iMzYiIHI9IjMuNSIgc3Ryb2tlPSIjNGM3ZWQ2IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTIuNSAxNWMyIDYgMyA4IDEyIDEyczEyIDMuNSAxMiA4LjUiIHN0cm9rZT0iIzBkMWIzZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtZGFzaGFycmF5PSIxIDUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPgo=" alt=""></div>
+      <h2>Menzil &amp; Sürüş</h2>
+      <span class="count">3 başlık</span>
+    </div>
+    <ul class="topic-list">
+      <li><a href="rehber.html#menzil">Gerçek menzil kaç km?</a></li>
+      <li><a href="rehber.html#menzil">Kışın menzil ve tüketim — ne bekleyin?</a></li>
+      <li><a href="rehber.html#menzil">Pilot Assist / Adaptif Hız Sabitleyici deneyimi</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-head">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMTYiIHN0cm9rZT0iIzBkMWIzZCIgc3Ryb2tlLXdpZHRoPSIyIi8+PGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iNyIgc3Ryb2tlPSIjNGM3ZWQ2IiBzdHJva2Utd2lkdGg9IjIiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjI0IiByPSIxLjYiIGZpbGw9IiMwZDFiM2QiLz48cGF0aCBkPSJNMjQgOHY0TTI0IDM2djRNOCAyNGg0TTM2IDI0aDRNMTIuNyAxMi43bDIuOCAyLjhNMzIuNSAzMi41bDIuOCAyLjhNMzUuMyAxMi43bC0yLjggMi44TTE1LjUgMzIuNWwtMi44IDIuOCIgc3Ryb2tlPSIjMGQxYjNkIiBzdHJva2Utd2lkdGg9IjEuNiIvPjwvc3ZnPgo=" alt=""></div>
+      <h2>Bakım &amp; Donanım</h2>
+      <span class="count">5 başlık</span>
+    </div>
+    <ul class="topic-list">
+      <li><a href="rehber.html#bakim">Lastikler kaç PSI/bar olmalı?</a></li>
+      <li><a href="rehber.html#bakim">Jant / lastik sökümü nasıl yapılır?</a></li>
+      <li><a href="rehber.html#bakim">Direksiyondan gelen tıkırtı/gıcırtı sesi</a></li>
+      <li><a href="rehber.html#bakim">"Elinizi direksiyon simidinde tutun" uyarısı</a></li>
+      <li><a href="rehber.html#bakim">Aksesuar, PPF, paspas ve cam filmi tavsiyeleri</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-head">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTI0IDZsMTYgNnYxMWMwIDEwLTcgMTYuNS0xNiAxOS05LTIuNS0xNi05LTE2LTE5VjEybDE2LTZ6IiBzdHJva2U9IiMwZDFiM2QiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNyAyNGw1IDUgOS0xMSIgc3Ryb2tlPSIjNGM3ZWQ2IiBzdHJva2Utd2lkdGg9IjIuNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+Cg==" alt=""></div>
+      <h2>Güvenlik &amp; Acil Durum</h2>
+      <span class="count">4 başlık</span>
+    </div>
+    <ul class="topic-list">
+      <li><a href="rehber.html#guvenlik">Aracın elektrikli olduğunu tanıma ve temel güvenlik</a></li>
+      <li><a href="rehber.html#guvenlik">Yangın durumunda</a></li>
+      <li><a href="rehber.html#guvenlik">Suya batma durumunda</a></li>
+      <li><a href="rehber.html#guvenlik">Çekme, nakliye ve depolama kuralları</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-head">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTggMTBoNWw1IDIwaDE4bDQtMTRIMTYiIHN0cm9rZT0iIzBkMWIzZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGNpcmNsZSBjeD0iMjEiIGN5PSIzOCIgcj0iMi40IiBmaWxsPSIjMGQxYjNkIi8+PGNpcmNsZSBjeD0iMzMiIGN5PSIzOCIgcj0iMi40IiBmaWxsPSIjMGQxYjNkIi8+PC9zdmc+Cg==" alt=""></div>
+      <h2>Satın Alma &amp; Teslimat</h2>
+      <span class="count">2 başlık</span>
+    </div>
+    <ul class="topic-list">
+      <li><a href="rehber.html#satinalma">Fiyat ve ÖTV dilimi hakkında bilinmesi gerekenler</a></li>
+      <li><a href="rehber.html#satinalma">Teslimat süreci nasıl işliyor?</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-head">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIyNCIgcj0iOCIgc3Ryb2tlPSIjMGQxYjNkIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMjMgMjRoMTdNMzQgMjR2Nk00MCAyNHY2IiBzdHJva2U9IiM0YzdlZDYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+Cg==" alt=""></div>
+      <h2>Gizli Özellikler &amp; İpuçları</h2>
+      <span class="count">1 başlık</span>
+    </div>
+    <ul class="topic-list">
+      <li><a href="rehber.html#ipuclari">Az bilinen özellikler</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-head">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTMxIDlhOCA4IDAgMDAtMTAuOSA5LjZMOCAzMC43VjQwaDkuM2wxMi0xMi4xQTggOCAwIDAwMzkgMTdsLTYgNi01LTUgNi02eiIgc3Ryb2tlPSIjMGQxYjNkIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4K" alt=""></div>
+      <h2>Sık Karşılaşılan Sorunlar</h2>
+      <span class="count">4 başlık</span>
+    </div>
+    <ul class="topic-list">
+      <li><a href="rehber.html#sorunlar">Geri kamera görüntüsünün içeri kaçması</a></li>
+      <li><a href="rehber.html#sorunlar">Kaput açılmıyor</a></li>
+      <li><a href="rehber.html#sorunlar">Alarm durduk yere ötüyor</a></li>
+      <li><a href="rehber.html#sorunlar">TPMS gerçek değerden farklı gösteriyor</a></li>
+    </ul>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-head">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTggMTJoMzJ2MjBIMjFsLTcgN3YtN2gtNnoiIHN0cm9rZT0iIzBkMWIzZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTE1IDIwaDE4TTE1IDI2aDExIiBzdHJva2U9IiM0YzdlZDYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+Cg==" alt=""></div>
+      <h2>Topluluk Özeti</h2>
+      <span class="count">Ayrı sayfa</span>
+    </div>
+    <ul class="topic-list">
+      <li><a href="topluluk.html#artilar">Topluluğun artı olarak gördükleri</a></li>
+      <li><a href="topluluk.html#eksiler">Topluluğun eksi olarak gördükleri</a></li>
+      <li><a href="topluluk.html#metodoloji">Bu özet nasıl derlendi?</a></li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <div class="foot-links">
+    <a href="index.html">Anasayfa</a>
+    <a href="rehber.html">Detaylı Rehber</a>
+    <a href="topluluk.html">Topluluk Özeti</a>
+  </div>
+  <p>Bu sayfa bağımsız bir kullanıcı derlemesidir, Volvo Cars'ın resmi bir yayını değildir.</p>
+</footer>
+
+</body>
+</html>
