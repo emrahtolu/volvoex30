@@ -277,10 +277,125 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
 }
 .verdict p{color:#c7d0e6; font-size:14px; max-width:640px; margin:0 auto;}
 
+/* ---------- ROADMAP / TIMELINE (gelecek.html) ---------- */
+.roadmap{ position:relative; margin:32px 0 8px; padding-left:36px; border-left:3px solid var(--line); }
+.roadmap-item{ position:relative; margin-bottom:34px; }
+.roadmap-item:last-child{ margin-bottom:0; }
+.roadmap-item::before{
+  content:""; position:absolute; left:-45px; top:5px; width:15px; height:15px; border-radius:50%;
+  background:var(--blue); border:3px solid var(--bg); box-shadow:0 0 0 2px var(--blue);
+}
+.roadmap-item.done::before{ background:var(--green); box-shadow:0 0 0 2px var(--green);}
+.roadmap-item.pending::before{ background:var(--orange); box-shadow:0 0 0 2px var(--orange);}
+.roadmap-item.wish::before{ background:#b7bcc7; box-shadow:0 0 0 2px #b7bcc7;}
+.roadmap-date{ font-family:var(--mono); font-size:11.5px; color:var(--blue); font-weight:700; text-transform:uppercase; letter-spacing:.04em; margin-bottom:5px;}
+.roadmap-item h4{ font-family:var(--head); font-size:17px; margin:0 0 6px; color:var(--navy); font-weight:700;}
+.roadmap-item p{ font-size:13.5px; color:var(--muted); margin:0; max-width:640px;}
+
+/* confidence badges */
+.confidence{
+  display:inline-flex; align-items:center; gap:7px; font-family:var(--mono); font-size:10.5px;
+  padding:5px 13px; border-radius:100px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;
+}
+.confidence::before{ content:""; width:7px; height:7px; border-radius:50%; }
+.confidence.official{ background:var(--green-soft); color:#227a52;}
+.confidence.official::before{ background:var(--green);}
+.confidence.progress{ background:var(--blue-soft); color:#2c5aa8;}
+.confidence.progress::before{ background:var(--blue);}
+.confidence.wish{ background:#eef0f3; color:#5c6270;}
+.confidence.wish::before{ background:#9aa1b3;}
+
+/* feature grid for wishlist */
+.feature-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:18px 0;}
+.feature-item{
+  background:#fbfbfc; border:1px solid var(--line); border-radius:var(--radius-sm);
+  padding:16px 18px; display:flex; gap:12px; align-items:flex-start;
+}
+.feature-item .n{
+  font-family:var(--head); font-weight:700; font-size:13px; color:#fff;
+  background:var(--muted); width:24px; height:24px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.feature-item div p{margin:0 0 3px; font-weight:600; font-size:13.5px; color:var(--ink);}
+.feature-item div span{font-size:12px; color:var(--muted);}
+
 .img-note{
   border-radius:var(--radius-sm); border:1px dashed #c7c1b4; background:#f7f5f0; color:var(--muted);
   font-family:var(--mono); font-size:11.5px; padding:16px; text-align:center;
 }
+
+/* ---------- QUICK-ANSWER ACCORDION (homepage "Hızlı Çözümler") ---------- */
+.qa-search{ max-width:520px; margin:0 0 24px; position:relative;}
+.qa-search input{
+  width:100%; padding:14px 20px; font-size:14.5px; border-radius:100px;
+  border:1px solid var(--line); background:#fff; font-family:var(--sans);
+}
+.qa-search input:focus{ outline:2px solid var(--blue); outline-offset:1px;}
+.qa-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px;}
+.qa-item{
+  background:var(--card); border-radius:var(--radius-sm); border:1px solid var(--line);
+  overflow:hidden; transition:box-shadow .15s, border-color .15s;
+}
+.qa-item[open]{ box-shadow:var(--shadow); border-color:transparent;}
+.qa-item.qa-hidden{ display:none;}
+.qa-item summary{
+  cursor:pointer; padding:16px 44px 16px 18px; font-family:var(--sans); font-weight:600; font-size:14px;
+  color:var(--navy); list-style:none; position:relative; user-select:none;
+}
+.qa-item summary::-webkit-details-marker{ display:none;}
+.qa-item summary::after{
+  content:"+"; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-family:var(--head); font-size:19px; font-weight:600; color:var(--blue); transition:transform .2s;
+}
+.qa-item[open] summary::after{ content:"–"; }
+.qa-item summary .qa-tag{
+  display:block; font-family:var(--mono); font-size:10px; color:var(--muted); text-transform:uppercase;
+  letter-spacing:.04em; margin-bottom:3px; font-weight:400;
+}
+.qa-item .qa-body{ padding:0 18px 18px; font-size:13.5px; color:#3a4150; line-height:1.6;}
+.qa-item .qa-body p{margin:0 0 8px;}
+.qa-item .qa-body p:last-child{margin-bottom:0;}
+.qa-item .qa-body a{color:var(--blue); font-weight:600;}
+.qa-meta{font-family:var(--mono); font-size:12px; color:var(--muted); margin:-8px 0 20px;}
+
+/* ---------- PHONE MOCKUP (Volvo Cars app illustrations) ---------- */
+.phone-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:22px; margin:20px 0;}
+.phone{
+  background:var(--navy); border-radius:28px; padding:10px; box-shadow:var(--shadow);
+  max-width:200px; margin:0 auto;
+}
+.phone .screen{
+  background:#f4f6f9; border-radius:20px; overflow:hidden; aspect-ratio:9/18.5;
+  display:flex; flex-direction:column; position:relative;
+}
+.phone .screen .sbar{
+  background:var(--navy); color:#fff; font-family:var(--mono); font-size:9px;
+  padding:8px 14px 6px; display:flex; justify-content:space-between; align-items:center;
+}
+.phone .screen .content{ padding:12px; flex:1; display:flex; flex-direction:column; gap:8px;}
+.phone .caption{ text-align:center; font-family:var(--sans); font-weight:600; font-size:12.5px; color:var(--navy); margin-top:10px;}
+.phone .subcaption{ text-align:center; font-family:var(--mono); font-size:10.5px; color:var(--muted); margin-top:2px;}
+.mock-stat{ background:#fff; border-radius:10px; padding:8px 10px; display:flex; justify-content:space-between; align-items:center; font-family:var(--sans);}
+.mock-stat .k{font-size:9px; color:var(--muted); text-transform:uppercase;}
+.mock-stat .v{font-size:13px; font-weight:700; color:var(--navy);}
+.mock-bar{height:6px; border-radius:4px; background:var(--line); overflow:hidden;}
+.mock-bar span{display:block; height:100%; background:var(--green);}
+.mock-btn{background:var(--blue); color:#fff; border-radius:100px; text-align:center; font-size:10px; font-weight:700; padding:7px; font-family:var(--sans);}
+.mock-icon-row{display:flex; gap:6px;}
+.mock-icon{width:26px; height:26px; border-radius:8px; background:var(--blue-soft); flex-shrink:0;}
+.mock-tire{ display:grid; grid-template-columns:1fr 1fr; gap:6px;}
+.mock-tire div{background:#fff; border-radius:8px; padding:6px; text-align:center; font-family:var(--mono); font-size:10px; color:var(--navy); font-weight:700;}
+
+/* ---------- LEVEL INDICATOR (OPD Off/Low/High tabs) ---------- */
+.level-row{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:16px 0;}
+.level-box{ border-radius:var(--radius-sm); border:1px solid var(--line); padding:16px; text-align:center;}
+.level-box .dot{width:12px; height:12px; border-radius:50%; margin:0 auto 8px;}
+.level-box.off .dot{background:#c3c8d1;}
+.level-box.low .dot{background:var(--blue);}
+.level-box.high .dot{background:var(--green);}
+.level-box h5{font-family:var(--head); font-size:14px; margin:0 0 4px; color:var(--navy);}
+.level-box p{font-size:12px; color:var(--muted); margin:0;}
+@media (max-width:640px){ .level-row{grid-template-columns:1fr;} }
 
 @media (max-width:720px){
   .hero{padding:48px 18px 80px;}
@@ -300,6 +415,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       <a href="index.html">Anasayfa</a>
       <a href="konular.html">Başlıklar</a>
       <a href="rehber.html">Detaylı Rehber</a>
+      <a href="gelecek.html">Gelecek Sürüm</a>
       <a href="topluluk.html" class="active">Topluluk Özeti</a>
     </div>
   </div>
@@ -395,6 +511,8 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       <h3>Yazılım ve uygulama</h3>
       <span class="tag tag-warn">Eleştiri — en çok şikayet edilen alan</span>
       <ul>
+        <li>Uzaktan klima çalıştırma özelliğinin kesintili çalıştığı veya araç uyku moduna geçince uygulama bağlantısının koptuğu bildiriliyor.</li>
+        <li>Android telefonlarda dijital anahtar (telefonla anahtarsız kullanım) desteğinin olmaması eleştiriliyor.</li>
         <li>Bazı kullanıcılar tüm seslerin (müzik, sinyal, sensör sesleri dahil) anlık olarak kesilip geri geldiğini bildirdi — bu artık resmi bir geri çağırma kapsamında (bkz. Detaylı Rehber).</li>
         <li>Bazı kullanıcılar araca yaklaşırken kilidin açılmaması sorunu yaşadı.</li>
       </ul>
@@ -476,6 +594,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
     <a href="index.html">Anasayfa</a>
     <a href="konular.html">Başlıklar</a>
     <a href="rehber.html">Detaylı Rehber</a>
+    <a href="gelecek.html">Gelecek Sürüm</a>
   </div>
   <p>Bu sayfa bağımsız bir kullanıcı derlemesidir, Volvo Cars'ın resmi bir yayını değildir.</p>
 </footer>

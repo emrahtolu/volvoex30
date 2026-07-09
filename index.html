@@ -277,10 +277,125 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
 }
 .verdict p{color:#c7d0e6; font-size:14px; max-width:640px; margin:0 auto;}
 
+/* ---------- ROADMAP / TIMELINE (gelecek.html) ---------- */
+.roadmap{ position:relative; margin:32px 0 8px; padding-left:36px; border-left:3px solid var(--line); }
+.roadmap-item{ position:relative; margin-bottom:34px; }
+.roadmap-item:last-child{ margin-bottom:0; }
+.roadmap-item::before{
+  content:""; position:absolute; left:-45px; top:5px; width:15px; height:15px; border-radius:50%;
+  background:var(--blue); border:3px solid var(--bg); box-shadow:0 0 0 2px var(--blue);
+}
+.roadmap-item.done::before{ background:var(--green); box-shadow:0 0 0 2px var(--green);}
+.roadmap-item.pending::before{ background:var(--orange); box-shadow:0 0 0 2px var(--orange);}
+.roadmap-item.wish::before{ background:#b7bcc7; box-shadow:0 0 0 2px #b7bcc7;}
+.roadmap-date{ font-family:var(--mono); font-size:11.5px; color:var(--blue); font-weight:700; text-transform:uppercase; letter-spacing:.04em; margin-bottom:5px;}
+.roadmap-item h4{ font-family:var(--head); font-size:17px; margin:0 0 6px; color:var(--navy); font-weight:700;}
+.roadmap-item p{ font-size:13.5px; color:var(--muted); margin:0; max-width:640px;}
+
+/* confidence badges */
+.confidence{
+  display:inline-flex; align-items:center; gap:7px; font-family:var(--mono); font-size:10.5px;
+  padding:5px 13px; border-radius:100px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;
+}
+.confidence::before{ content:""; width:7px; height:7px; border-radius:50%; }
+.confidence.official{ background:var(--green-soft); color:#227a52;}
+.confidence.official::before{ background:var(--green);}
+.confidence.progress{ background:var(--blue-soft); color:#2c5aa8;}
+.confidence.progress::before{ background:var(--blue);}
+.confidence.wish{ background:#eef0f3; color:#5c6270;}
+.confidence.wish::before{ background:#9aa1b3;}
+
+/* feature grid for wishlist */
+.feature-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:18px 0;}
+.feature-item{
+  background:#fbfbfc; border:1px solid var(--line); border-radius:var(--radius-sm);
+  padding:16px 18px; display:flex; gap:12px; align-items:flex-start;
+}
+.feature-item .n{
+  font-family:var(--head); font-weight:700; font-size:13px; color:#fff;
+  background:var(--muted); width:24px; height:24px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.feature-item div p{margin:0 0 3px; font-weight:600; font-size:13.5px; color:var(--ink);}
+.feature-item div span{font-size:12px; color:var(--muted);}
+
 .img-note{
   border-radius:var(--radius-sm); border:1px dashed #c7c1b4; background:#f7f5f0; color:var(--muted);
   font-family:var(--mono); font-size:11.5px; padding:16px; text-align:center;
 }
+
+/* ---------- QUICK-ANSWER ACCORDION (homepage "Hızlı Çözümler") ---------- */
+.qa-search{ max-width:520px; margin:0 0 24px; position:relative;}
+.qa-search input{
+  width:100%; padding:14px 20px; font-size:14.5px; border-radius:100px;
+  border:1px solid var(--line); background:#fff; font-family:var(--sans);
+}
+.qa-search input:focus{ outline:2px solid var(--blue); outline-offset:1px;}
+.qa-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px;}
+.qa-item{
+  background:var(--card); border-radius:var(--radius-sm); border:1px solid var(--line);
+  overflow:hidden; transition:box-shadow .15s, border-color .15s;
+}
+.qa-item[open]{ box-shadow:var(--shadow); border-color:transparent;}
+.qa-item.qa-hidden{ display:none;}
+.qa-item summary{
+  cursor:pointer; padding:16px 44px 16px 18px; font-family:var(--sans); font-weight:600; font-size:14px;
+  color:var(--navy); list-style:none; position:relative; user-select:none;
+}
+.qa-item summary::-webkit-details-marker{ display:none;}
+.qa-item summary::after{
+  content:"+"; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-family:var(--head); font-size:19px; font-weight:600; color:var(--blue); transition:transform .2s;
+}
+.qa-item[open] summary::after{ content:"–"; }
+.qa-item summary .qa-tag{
+  display:block; font-family:var(--mono); font-size:10px; color:var(--muted); text-transform:uppercase;
+  letter-spacing:.04em; margin-bottom:3px; font-weight:400;
+}
+.qa-item .qa-body{ padding:0 18px 18px; font-size:13.5px; color:#3a4150; line-height:1.6;}
+.qa-item .qa-body p{margin:0 0 8px;}
+.qa-item .qa-body p:last-child{margin-bottom:0;}
+.qa-item .qa-body a{color:var(--blue); font-weight:600;}
+.qa-meta{font-family:var(--mono); font-size:12px; color:var(--muted); margin:-8px 0 20px;}
+
+/* ---------- PHONE MOCKUP (Volvo Cars app illustrations) ---------- */
+.phone-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:22px; margin:20px 0;}
+.phone{
+  background:var(--navy); border-radius:28px; padding:10px; box-shadow:var(--shadow);
+  max-width:200px; margin:0 auto;
+}
+.phone .screen{
+  background:#f4f6f9; border-radius:20px; overflow:hidden; aspect-ratio:9/18.5;
+  display:flex; flex-direction:column; position:relative;
+}
+.phone .screen .sbar{
+  background:var(--navy); color:#fff; font-family:var(--mono); font-size:9px;
+  padding:8px 14px 6px; display:flex; justify-content:space-between; align-items:center;
+}
+.phone .screen .content{ padding:12px; flex:1; display:flex; flex-direction:column; gap:8px;}
+.phone .caption{ text-align:center; font-family:var(--sans); font-weight:600; font-size:12.5px; color:var(--navy); margin-top:10px;}
+.phone .subcaption{ text-align:center; font-family:var(--mono); font-size:10.5px; color:var(--muted); margin-top:2px;}
+.mock-stat{ background:#fff; border-radius:10px; padding:8px 10px; display:flex; justify-content:space-between; align-items:center; font-family:var(--sans);}
+.mock-stat .k{font-size:9px; color:var(--muted); text-transform:uppercase;}
+.mock-stat .v{font-size:13px; font-weight:700; color:var(--navy);}
+.mock-bar{height:6px; border-radius:4px; background:var(--line); overflow:hidden;}
+.mock-bar span{display:block; height:100%; background:var(--green);}
+.mock-btn{background:var(--blue); color:#fff; border-radius:100px; text-align:center; font-size:10px; font-weight:700; padding:7px; font-family:var(--sans);}
+.mock-icon-row{display:flex; gap:6px;}
+.mock-icon{width:26px; height:26px; border-radius:8px; background:var(--blue-soft); flex-shrink:0;}
+.mock-tire{ display:grid; grid-template-columns:1fr 1fr; gap:6px;}
+.mock-tire div{background:#fff; border-radius:8px; padding:6px; text-align:center; font-family:var(--mono); font-size:10px; color:var(--navy); font-weight:700;}
+
+/* ---------- LEVEL INDICATOR (OPD Off/Low/High tabs) ---------- */
+.level-row{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:16px 0;}
+.level-box{ border-radius:var(--radius-sm); border:1px solid var(--line); padding:16px; text-align:center;}
+.level-box .dot{width:12px; height:12px; border-radius:50%; margin:0 auto 8px;}
+.level-box.off .dot{background:#c3c8d1;}
+.level-box.low .dot{background:var(--blue);}
+.level-box.high .dot{background:var(--green);}
+.level-box h5{font-family:var(--head); font-size:14px; margin:0 0 4px; color:var(--navy);}
+.level-box p{font-size:12px; color:var(--muted); margin:0;}
+@media (max-width:640px){ .level-row{grid-template-columns:1fr;} }
 
 @media (max-width:720px){
   .hero{padding:48px 18px 80px;}
@@ -300,6 +415,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       <a href="index.html" class="active">Anasayfa</a>
       <a href="konular.html">Başlıklar</a>
       <a href="rehber.html">Detaylı Rehber</a>
+      <a href="gelecek.html">Gelecek Sürüm</a>
       <a href="topluluk.html">Topluluk Özeti</a>
     </div>
   </div>
@@ -309,7 +425,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
   <div class="hero-inner">
     <div class="eyebrow">● Bağımsız kullanıcı rehberi · Temmuz 2026</div>
     <h1>Volvo EX30 için tek durak bilgi merkezi</h1>
-    <p class="lead">Yazılım sürümleri, şarj/batarya, gerçek menzil, bakım, güvenlik ve satın alma — resmi Volvo belgeleri ile 12000'in üzerinde topluluk mesajından derlenen deneyimler tek yerde.</p>
+    <p class="lead">Yazılım sürümleri, şarj/batarya, gerçek menzil, bakım, güvenlik ve satın alma — resmi Volvo belgeleri ile 700'ün üzerinde topluluk mesajından derlenen deneyimler tek yerde.</p>
 
     <div class="search-wrap">
       <input type="text" id="homeSearch" placeholder="Ara: örn. 'şarj yüzdesi', 'direksiyon sesi', 'geri çağırma'..." onkeydown="if(event.key==='Enter'){goSearch();}">
@@ -324,17 +440,17 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
     <div class="ring">
       <svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="24" fill="none" stroke="#dde8fb" stroke-width="6"/><circle cx="28" cy="28" r="24" fill="none" stroke="#4c7ed6" stroke-width="6" stroke-dasharray="151" stroke-dashoffset="38" stroke-linecap="round" transform="rotate(-90 28 28)"/></svg>
     </div>
-    <div class="num">1.8 Güncel Sürüm</div>
+    <div class="num">1.8</div>
     <div class="label">Güncel yazılım sürümü</div>
-    <div class="desc">1.9 kablolu servis güncellemesi · 2.1 beklenen sürüm</div>
+    <div class="desc">1.9 doğrulanamadı · 2.1 muhtemelen uygulama sürümüyle karışıyor</div>
   </div>
   <div class="stat-card">
     <div class="ring">
       <svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="24" fill="none" stroke="#dcf3e8" stroke-width="6"/><circle cx="28" cy="28" r="24" fill="none" stroke="#3fa876" stroke-width="6" stroke-dasharray="151" stroke-dashoffset="15" stroke-linecap="round" transform="rotate(-90 28 28)"/></svg>
     </div>
-    <div class="num">3 Adet (Lansman Aracı) </div>
-    <div class="label">Türkiye'yi kapsayan batarya geri çağırma (müşteri olarak) bulunmuyor</div>
-    <div class="desc">TR araçları Belçika (Gent) üretimidir.</div>
+    <div class="num">0</div>
+    <div class="label">Türkiye'yi kapsayan batarya geri çağırma</div>
+    <div class="desc">TR araçları Belçika (Gent) üretimi, CATL/CALB pilli</div>
   </div>
   <div class="stat-card">
     <div class="ring">
@@ -348,13 +464,130 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
     <div class="ring">
       <svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="24" fill="none" stroke="#fbe3dd" stroke-width="6"/><circle cx="28" cy="28" r="24" fill="none" stroke="#e2694f" stroke-width="6" stroke-dasharray="151" stroke-dashoffset="95" stroke-linecap="round" transform="rotate(-90 28 28)"/></svg>
     </div>
-    <div class="num">12000+</div>
+    <div class="num">700+</div>
     <div class="label">Taranan topluluk mesajı</div>
     <div class="desc">İsimsiz olarak temalara göre derlendi</div>
   </div>
 </div>
 
 <main>
+
+  <div class="section-label" id="hizli"><span class="num-chip">00</span> Hızlı Çözümler</div>
+  <div class="section-intro">En çok sorulan "şu nasıl yapılır / şu var mı" sorularının kısa yanıtları — üzerine tıklayın, açılsın. Aradığınızı bulamazsanız üstteki kutuya yazıp filtreleyebilir, ya da Detaylı Rehber'de tam metin arayabilirsiniz.</div>
+
+  <div class="qa-search">
+    <input type="text" id="qaSearch" placeholder="Kutucuklarda ara: örn. 'lastik', '12V', 'ısıtma'..." oninput="filterQA()">
+  </div>
+  <div class="qa-meta" id="qaMeta">14 hızlı çözüm listeleniyor.</div>
+
+  <div class="qa-grid" id="qaGrid">
+
+    <details class="qa-item" data-kw="menzil modu range performance drive mode ayarlama açma">
+      <summary><span class="qa-tag">Sürüş</span>Menzil modu nasıl açılır?</summary>
+      <div class="qa-body">
+        <p>EX30'da ayrı bir "Eco/Range" düğmesi yok — bu, sık karışılan bir nokta. 2026 model yılı ve 2024–2025 Twin Motor araçlarda ekranın altındaki bağlama duyarlı çubuktan <strong>Drive mode</strong> düğmesiyle Range/Standard/Performance arasında geçiş yapılabiliyor. <strong>Single Motor araçlarda bu düğmeye Volvo'nun resmi yayın notlarına göre "daha sonraki bir güncellemede"</strong> kavuşulacak.</p>
+        <p>O güncelleme gelene kadar: Twin Motor (AWD) araçlarda Ayarlar → Sürüş menüsündeki <strong>"Performance All-Wheel Drive"</strong> anahtarını <strong>kapalı</strong> bırakmak, ön motoru gevşek sürüşte devre dışı bırakarak menzili önceliklendiren varsayılan davranıştır. Single Motor araçlarda zaten tek motor olduğu için bu anahtar bulunmuyor.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="lastik basınç nasıl kontrol edilir tpms ekran uygulama">
+      <summary><span class="qa-tag">Bakım</span>Lastik basıncı nasıl kontrol edilir?</summary>
+      <div class="qa-body">
+        <p>Üç yol var: (1) Orta ekranda araç durumu/TPMS ekranından anlık değerleri görün, (2) <strong>Volvo Cars uygulamasındaki "Bakım kontrolleri"</strong> ekranından uzaktan kontrol edin, (3) En doğru sonuç için ayda bir, lastikler soğukken elle bir manometreyle ölçün — TPMS bazen gerçek değerden birkaç psi sapma gösterebiliyor.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="lastik basınç kaç olmalı psi bar 38 42">
+      <summary><span class="qa-tag">Bakım</span>Lastik basınçları kaç olmalı?</summary>
+      <div class="qa-body">
+        <p>Sürücü kapısı eşiğindeki etikete göre: standart yük için <strong>~38 psi</strong>, tam yük/"eco" için <strong>~42 psi</strong> (yakl. 2,6–2,9 bar). Fabrika çıkışı genelde 40–42 psi civarı geliyor.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="12v priz var mı bagaj çakmaklık soket">
+      <summary><span class="qa-tag">Donanım</span>Bu araçta 12V priz var mı?</summary>
+      <div class="qa-body">
+        <p>Evet — <strong>bagajın sol tarafında</strong> bir 12V güç soketi bulunuyor (soğutucu kutu gibi cihazlar için). Araç kilitlendiğinde soket otomatik kapanıyor; kilit açıkken bir süre daha aktif kalıyor. Bunu V2L ile karıştırmayın: 12V soket düşük güçlü aksesuarlar için 12V aküyü kullanırken, V2L (gelecek güncellemeyle gelecek) ana yüksek voltaj bataryasını kullanıyor.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="koltuk ısıtma nasıl açılır direksiyon ısıtma quick controls">
+      <summary><span class="qa-tag">Konfor</span>Koltuk ısıtması nasıl açılır?</summary>
+      <div class="qa-body">
+        <p>Ekranın alt kısmındaki hızlı kontroller (Quick Controls) çubuğundan tek dokunuşla açabilirsiniz; klima ekranından da erişilebilir. Dışarıdan, yola çıkmadan önce <strong>Volvo Cars uygulamasından</strong> ön ısıtmayı başlatırsanız, dış sıcaklık 7°C altındaysa koltuk ve direksiyon ısıtması otomatik devreye giriyor.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="dijital anahtar kart nasıl tanımlarım nfc telefon kurulum">
+      <summary><span class="qa-tag">Anahtar</span>Bu araca nasıl dijital anahtar/kart tanımlarım?</summary>
+      <div class="qa-body">
+        <p><strong>Dijital anahtar (telefon):</strong> Volvo Cars uygulamasında Volvo ID'nizle oturum açıp aracı eşleştirin; anahtar telefonunuzun cüzdan uygulamasına eklenir. Uyumlu telefon markası şartı var.</p>
+        <p><strong>Fiziksel kart/etiket:</strong> Yeni kartların tanımlanması yetkili bayi/servis üzerinden yapılıyor; ek kart/etiket sipariş edip mevcut anahtarınızla eşleştirebilirsiniz.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="araç alırken nelere dikkat etmeli satın alma kontrol vin batarya">
+      <summary><span class="qa-tag">Satın Alma</span>Aracımı alırken nelere dikkat etmeliyim?</summary>
+      <div class="qa-body">
+        <p>Teslim almadan/imzalamadan önce kontrol edilmesi önerilenler:</p>
+        <p>• Orta ekrandan <strong>yazılım sürümünü</strong> sorun (ne kadar güncel olduğu, aracın "olgunluğu" hakkında fikir verir)<br>
+        • VIN ile <a href="rehber.html#sarj">Detaylı Rehber'deki geri çağırma sorgulama bilgisinden</a> kapsamı kontrol edin (volvootomobil.com.tr/recall)<br>
+        • Batarya markasını (CATL/CALB — Türkiye'de normal) ve üretim yerini proforma/ruhsatta teyit edin<br>
+        • AC şarj kablosu, V2L adaptörü (varsa), kart/etiket sayısı gibi standart aksesuarların eksiksiz teslim edildiğini kontrol edin<br>
+        • Kısa bir test sürüşünde temel fonksiyonları deneyin: Bluetooth eşleştirme, Pilot Assist, klima, şarj başlatma</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="menzili artırmak one pedal drive rejeneratif nasıl çalışır">
+      <summary><span class="qa-tag">Sürüş</span>Menzili artırmak için One Pedal Drive nasıl kullanılır?</summary>
+      <div class="qa-body">
+        <p>Ayarlar → Sürüş menüsünden One Pedal Drive'ı açın ve rejen seviyesini <strong>"Yüksek"</strong> seçin (Off/Low/High seçenekleri arasından — bu seviye seçimi direksiyondaki özelleştirilebilir tuşa da atanabilir). Ayrıca "Creep" (süzülme) ayarını <strong>kapalı</strong> tutmak, gereksiz enerji kaybını azaltıyor. Ayrıntılar için aşağıdaki "Frenleme, Rejeneratif Fren ve Süzülme" bölümüne bakın.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="süzülme creep nedir one pedal drive farkı">
+      <summary><span class="qa-tag">Sürüş</span>Süzülme (Creep) nedir, One Pedal Drive'dan farkı ne?</summary>
+      <div class="qa-body">
+        <p>İkisi <strong>tamamen ayrı ayarlar</strong>. One Pedal Drive, gaz pedalından ayağınızı çektiğinizde rejeneratif fren uygulayarak aracı yavaşlatır/durdurur. Creep ise açıkken, fren pedalından ayağınızı çektiğinizde araç otomatik vitesli benzinli bir araç gibi hafifçe ileri sürüklenir — trafikte küçük ilerlemeler için kullanışlı. Creep kapalıyken araç sadece gaza basınca hareket eder ve durduğunuzda Auto Hold devreye girer. Not: <strong>geri viteste creep her zaman aktiftir</strong>, kapatılamaz.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="şarj yüzdesi günlük kaç olmalı 80 90 100">
+      <summary><span class="qa-tag">Şarj</span>Günlük şarj yüzdesi kaç olmalı?</summary>
+      <div class="qa-body">
+        <p>Günlük kullanım için <strong>%90'a kadar</strong> şarj etmek öneriliyor; %100'ü yalnızca uzun yolculuk öncesinde kullanın. Detaylar ve istisnalar (belirli VIN'ler için %70 tavsiyesi) için Detaylı Rehber'deki Şarj &amp; Batarya bölümüne bakın.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="yazılım güncelleme nasıl kontrol edilir sürüm">
+      <summary><span class="qa-tag">Yazılım</span>Yazılım güncellemesi nasıl kontrol edilir/yapılır?</summary>
+      <div class="qa-body">
+        <p><em>Ayarlar → Sistem → Yazılım güncelleme</em> yolundan mevcut sürümü görebilir, güncelleme varsa başlatabilirsiniz. OTA indirmenin çalışması için Volvo Cars uygulamasından otomatik güncelleme iznini vermeniz gerekiyor — bu onay ekranda değil, yalnızca uygulamada verilir.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="ses kesiliyor sessiz kalıyor ne yapmalıyım geri çağırma">
+      <summary><span class="qa-tag">Sorun</span>Ses aniden kesiliyor, ne yapmalıyım?</summary>
+      <div class="qa-body">
+        <p>Bu, Nisan 2026'dan beri resmi bir <strong>geri çağırma/servis bülteni</strong> kapsamında (arka koltuk altı amfi soket/kablo sorunu). <a href="rehber.html#yazilim">Detaylı Rehber'deki ilgili karta</a> bakıp VIN'inizi volvootomobil.com.tr/recall üzerinden sorgulayın.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="direksiyon tıkırdıyor gıcırdıyor normal mi ses">
+      <summary><span class="qa-tag">Sorun</span>Direksiyon dönüşte tıkırdıyor, normal mi?</summary>
+      <div class="qa-body">
+        <p>Bilinen ve sık bildirilen bir durum. Bazı araçlarda kendiliğinden geçiyor, bazılarında servis direksiyon modülünü veya kablo yalıtımını değiştirerek çözüyor. Servise giderken sesi videoya kaydedip götürmek süreci hızlandırıyor.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="v2l ne zaman gelecek nasıl kullanılır adaptör">
+      <summary><span class="qa-tag">Gelecek</span>V2L ne zaman gelecek, nasıl kullanılır?</summary>
+      <div class="qa-body">
+        <p>Volvo'nun resmi açıklamasına göre <strong>yaz 2026'da</strong>, mevcut araçlara ücretsiz bir OTA güncellemesiyle geliyor (ayrıca bir V2L adaptörü satın almanız gerekecek). Güncel durum için <a href="gelecek.html">Gelecek Sürüm sayfasına</a> bakın.</p>
+      </div>
+    </details>
+
+  </div>
 
   <div class="section-label"><span class="num-chip">01</span> Kategoriler</div>
   <div class="section-intro">Aradığınız konuya en hızlı yoldan ulaşmak için bir kategori seçin, ya da tüm başlıkların listesi için "Başlıklar" sayfasına gidin.</div>
@@ -405,14 +638,21 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
     <a class="tile" href="rehber.html#ipuclari">
       <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIyNCIgcj0iOCIgc3Ryb2tlPSIjMGQxYjNkIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMjMgMjRoMTdNMzQgMjR2Nk00MCAyNHY2IiBzdHJva2U9IiM0YzdlZDYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+Cg==" alt=""></div>
       <h3>Gizli Özellikler</h3>
-      <p>Calm/Surround modları, V2L(güncelleme ile gelecektir), PIN kilidi ve az bilinen diğer özellikler.</p>
+      <p>Calm/Surround modları, V2L, PIN kilidi ve az bilinen diğer özellikler.</p>
       <span class="count">İpuçları →</span>
+    </a>
+
+    <a class="tile" href="gelecek.html">
+      <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMiIgcj0iMy41IiBzdHJva2U9IiMwZDFiM2QiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjM4IiBjeT0iMzYiIHI9IjMuNSIgc3Ryb2tlPSIjNGM3ZWQ2IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTIuNSAxNWMyIDYgMyA4IDEyIDEyczEyIDMuNSAxMiA4LjUiIHN0cm9rZT0iIzBkMWIzZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtZGFzaGFycmF5PSIxIDUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPgo=" alt=""></div>
+      <h3>Gelecek Sürüm</h3>
+      <p>V2L, yeni arayüz ve Gemini için resmi tarihler — topluluğun istek listesiyle birlikte.</p>
+      <span class="count">Ayrı sayfa →</span>
     </a>
 
     <a class="tile" href="topluluk.html">
       <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTggMTJoMzJ2MjBIMjFsLTcgN3YtN2gtNnoiIHN0cm9rZT0iIzBkMWIzZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTE1IDIwaDE4TTE1IDI2aDExIiBzdHJva2U9IiM0YzdlZDYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+Cg==" alt=""></div>
       <h3>Topluluk Özeti</h3>
-      <p>12000'in üzerinde mesajdan derlenen artılar/eksiler</p>
+      <p>700'ün üzerinde mesajdan derlenen artılar/eksiler — tamamen isimsiz.</p>
       <span class="count">Ayrı sayfa →</span>
     </a>
 
@@ -445,12 +685,35 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
   <div class="foot-links">
     <a href="konular.html">Başlıklar</a>
     <a href="rehber.html">Detaylı Rehber</a>
-    <a href="topluluk.html">Topluluk Özeti</a>
+    <a href="gelecek.html">Gelecek Sürüm</a>
+      <a href="topluluk.html">Topluluk Özeti</a>
   </div>
   <p>Bu sayfa bağımsız bir kullanıcı derlemesidir, Volvo Cars'ın resmi bir yayını değildir. Aracınızla ilgili kesin bilgi için her zaman <a href="https://www.volvocars.com/tr/support/car/ex30/" target="_blank" rel="noopener">Volvo Cars resmi destek sitesini</a> veya yetkili servisinizi esas alın. İçerik Temmuz 2026 itibarıyla derlenmiştir.</p>
 </footer>
 
 <script>
+  function normalizeTr(str){
+    return str.toLocaleLowerCase('tr-TR')
+      .replaceAll('ı','i').replaceAll('İ','i')
+      .replaceAll('ğ','g').replaceAll('ş','s')
+      .replaceAll('ö','o').replaceAll('ü','u').replaceAll('ç','c');
+  }
+  function filterQA(){
+    const raw = document.getElementById('qaSearch').value.trim();
+    const q = normalizeTr(raw);
+    const items = document.querySelectorAll('.qa-item');
+    let visible = 0;
+    items.forEach(it => {
+      const haystack = normalizeTr((it.dataset.kw||'') + ' ' + it.innerText);
+      const match = q === '' || haystack.includes(q);
+      it.classList.toggle('qa-hidden', !match);
+      if(match) visible++;
+    });
+    document.getElementById('qaMeta').textContent = raw === ''
+      ? `${items.length} hızlı çözüm listeleniyor.`
+      : `"${raw}" için ${visible} sonuç bulundu.`;
+  }
+
   function goSearch(){
     const q = document.getElementById('homeSearch').value.trim();
     if(q){
