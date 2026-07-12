@@ -397,6 +397,36 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
 .level-box p{font-size:12px; color:var(--muted); margin:0;}
 @media (max-width:640px){ .level-row{grid-template-columns:1fr;} }
 
+/* ---------- LIVE / EXTERNAL SOURCE CARD (Reddit link-out) ---------- */
+.navlinks a.external{ display:inline-flex; align-items:center; gap:5px;}
+.navlinks a.external::after{ content:"↗"; font-size:11px; opacity:.7;}
+.live-card{
+  background:linear-gradient(135deg,#fff8ee,#fff);
+  border:1px solid #f0ddb8; border-radius:var(--radius);
+  padding:28px 30px; display:flex; align-items:center; gap:22px; box-shadow:var(--shadow);
+  flex-wrap:wrap;
+}
+.live-card .icon-badge{ width:56px; height:56px; border-radius:16px; background:var(--orange-soft); flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+.live-card .icon-badge img{width:30px; height:30px;}
+.live-card .txt{flex:1; min-width:220px;}
+.live-card h3{font-family:var(--head); font-size:18px; margin:0 0 4px; color:var(--navy);}
+.live-card p{font-size:13.5px; color:var(--muted); margin:0;}
+.live-card .go-btn{
+  background:var(--navy); color:#fff; font-family:var(--sans); font-weight:700; font-size:13.5px;
+  padding:12px 24px; border-radius:100px; text-decoration:none; white-space:nowrap;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.live-card .go-btn:hover{background:var(--navy-2);}
+.live-badge{
+  display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10px;
+  color:#c0762a; text-transform:uppercase; letter-spacing:.05em; font-weight:700; margin-bottom:8px;
+}
+.live-badge .pulse{width:7px; height:7px; border-radius:50%; background:#e8952f; animation:pulse 1.6s infinite;}
+@keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(232,149,47,.5);} 70%{box-shadow:0 0 0 8px rgba(232,149,47,0);} 100%{box-shadow:0 0 0 0 rgba(232,149,47,0);} }
+
+/* Son Gündem entries reuse .roadmap but with a 4th "live" dot color */
+.roadmap-item.live::before{ background:#e8952f; box-shadow:0 0 0 2px #e8952f;}
+
 @media (max-width:720px){
   .hero{padding:48px 18px 80px;}
   #searchInput, #homeSearch{padding:16px 100px 16px 18px;}
@@ -417,6 +447,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       <a href="rehber.html">Detaylı Rehber</a>
       <a href="gelecek.html" class="active">Gelecek Sürüm</a>
       <a href="topluluk.html">Topluluk Özeti</a>
+      <a href="https://www.reddit.com/r/ex30/" class="external" target="_blank" rel="noopener">Canlı Topluluk</a>
     </div>
   </div>
 </nav>
@@ -465,6 +496,44 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
 </div>
 
 <main>
+
+  <div class="section-label" id="son-gundem"><span class="num-chip">00</span> Son Gündem</div>
+  <div class="section-intro">Uluslararası EX30 topluluğunda (çoğunlukla ex30forums.com ve haber kaynakları üzerinden takip edilebilen) son haftaların öne çıkan, tarihli gelişmeleri. Bunların çoğu <strong>Türkiye'yi doğrudan ilgilendirmiyor</strong> ama "dünyada neler oluyor" sorusuna cevap veriyor.</div>
+
+  <div class="roadmap">
+    <div class="roadmap-item live">
+      <div class="roadmap-date">7 Temmuz 2026</div>
+      <h4>Batarya geri çağırma thread'i hâlâ çok aktif — 58+ sayfa</h4>
+      <p>Aralık 2025'te açılan "Important - Vehicle Safety Notice" başlıklı uluslararası forum konusu, Temmuz 2026'da hâlâ yeni yanıt alıyor. Güncel tartışma konusu: bazı bayilerde parça teslim hızının çok yavaş olması (bir bayi "50 araç için haftada 1 değişim" yani ~50 hafta bekleme süresi bildirdi).</p>
+    </div>
+    <div class="roadmap-item live">
+      <div class="roadmap-date">Mart 2026</div>
+      <h4>Geri çağırmanın kesin kapsamı netleşti: 33.777 araç</h4>
+      <p>Volvo'nun forumda paylaşılan resmi rakamı: dünya genelinde <strong>33.777 araç</strong> kapsamda (önceki "~40.000" tahminleri yerini bu kesin rakama bıraktı). Ayrıca sadece ABD'de NHTSA'nın #26V001 kodlu geri çağırmasında 40–45 araç olduğu, Birleşik Krallık'ta ise ~10.400 batarya paketinin 100'den fazla bayiye dağıtılması gerektiği konuşuluyor.</p>
+    </div>
+    <div class="roadmap-item live">
+      <div class="roadmap-date">Şubat 2026</div>
+      <h4>Sunwoda, aynı sorun nedeniyle Zeekr'de de 38.000+ araç geri çağırdı</h4>
+      <p>Etkilenen bataryaların üreticisi olarak <strong>Shandong Geely Sunwoda Battery Co.</strong> (Geely ile Sunwoda'nın ortak girişimi) netleşti. Aynı kalite sorununun, Geely'nin başka bir markası olan Zeekr'in 38.000'den fazla aracını da etkilediği ve Sunwoda'nın 6 Şubat 2026'da bir uzlaşmaya vardığı bildirildi.</p>
+    </div>
+    <div class="roadmap-item live">
+      <div class="roadmap-date">Ocak 2026</div>
+      <h4>İngiltere'de ek önlem: kapalı otoparkta şarj etmeyin</h4>
+      <p>İngiltere'deki denetim kurumu DVSA'nın talebiyle, etkilenen araç sahiplerine %70 şarj limitinin yanında <strong>kapalı/yeraltı otoparklarda şarj etmeme</strong> tavsiyesi de iletildi. Volvo, bu ek önlemin kendi değerlendirmelerinde gerekli olmadığını ama DVSA'nın talebi üzerine uygulandığını forumda paylaşılan yazışmada belirtti.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin:8px 0 40px;">Türkiye'deki EX30'lar (Belçika/Gent üretimi, CATL/CALB pilli) bu geri çağırmanın <strong>dışında</strong> — yukarıdakiler küresel tabloyu anlamak için. Ayrıntılar için <a href="rehber.html#sarj">Detaylı Rehber'deki geri çağırma kartına</a> bakın.</div>
+
+  <div class="live-card" style="margin-bottom:48px;">
+    <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iMTciIHN0cm9rZT0iIzBkMWIzZCIgc3Ryb2tlLXdpZHRoPSIyIi8+PGNpcmNsZSBjeD0iMTciIGN5PSIyNiIgcj0iMyIgZmlsbD0iI2YwYTUzZSIvPjxjaXJjbGUgY3g9IjMxIiBjeT0iMjYiIHI9IjMiIGZpbGw9IiNmMGE1M2UiLz48cGF0aCBkPSJNMTUgMzBjMi41IDIuNSAxNS41IDIuNSAxOCAwIiBzdHJva2U9IiMwZDFiM2QiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSIxNSIgcj0iMi41IiBmaWxsPSIjNGM3ZWQ2Ii8+PHBhdGggZD0iTTI0IDIwbDMuNS02IiBzdHJva2U9IiMwZDFiM2QiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+Cg==" alt=""></div>
+    <div class="txt">
+      <div class="live-badge"><span class="pulse"></span>Canlı Kaynak</div>
+      <h3>Daha taze bir şey mi arıyorsunuz?</h3>
+      <p>Bu liste periyodik olarak elle güncelleniyor, anlık değil. Şu an konuşulanlar için doğrudan Reddit topluluğuna bakabilirsiniz.</p>
+    </div>
+    <a class="go-btn" href="https://www.reddit.com/r/ex30/" target="_blank" rel="noopener">r/ex30'u Aç ↗</a>
+  </div>
 
   <div class="section-label" id="zaman-cizelgesi"><span class="num-chip">01</span> Sürüm Zaman Çizelgesi</div>
   <div class="section-intro">Şu ana kadar olanlar ve resmi olarak duyurulanlar, kronolojik sırayla. Yeşil nokta = zaten geldi, mavi = resmen duyuruldu ama henüz gelmedi, gri = topluluk isteği (söz verilmedi).</div>

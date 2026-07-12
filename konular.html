@@ -397,6 +397,36 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
 .level-box p{font-size:12px; color:var(--muted); margin:0;}
 @media (max-width:640px){ .level-row{grid-template-columns:1fr;} }
 
+/* ---------- LIVE / EXTERNAL SOURCE CARD (Reddit link-out) ---------- */
+.navlinks a.external{ display:inline-flex; align-items:center; gap:5px;}
+.navlinks a.external::after{ content:"↗"; font-size:11px; opacity:.7;}
+.live-card{
+  background:linear-gradient(135deg,#fff8ee,#fff);
+  border:1px solid #f0ddb8; border-radius:var(--radius);
+  padding:28px 30px; display:flex; align-items:center; gap:22px; box-shadow:var(--shadow);
+  flex-wrap:wrap;
+}
+.live-card .icon-badge{ width:56px; height:56px; border-radius:16px; background:var(--orange-soft); flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+.live-card .icon-badge img{width:30px; height:30px;}
+.live-card .txt{flex:1; min-width:220px;}
+.live-card h3{font-family:var(--head); font-size:18px; margin:0 0 4px; color:var(--navy);}
+.live-card p{font-size:13.5px; color:var(--muted); margin:0;}
+.live-card .go-btn{
+  background:var(--navy); color:#fff; font-family:var(--sans); font-weight:700; font-size:13.5px;
+  padding:12px 24px; border-radius:100px; text-decoration:none; white-space:nowrap;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.live-card .go-btn:hover{background:var(--navy-2);}
+.live-badge{
+  display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10px;
+  color:#c0762a; text-transform:uppercase; letter-spacing:.05em; font-weight:700; margin-bottom:8px;
+}
+.live-badge .pulse{width:7px; height:7px; border-radius:50%; background:#e8952f; animation:pulse 1.6s infinite;}
+@keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(232,149,47,.5);} 70%{box-shadow:0 0 0 8px rgba(232,149,47,0);} 100%{box-shadow:0 0 0 0 rgba(232,149,47,0);} }
+
+/* Son Gündem entries reuse .roadmap but with a 4th "live" dot color */
+.roadmap-item.live::before{ background:#e8952f; box-shadow:0 0 0 2px #e8952f;}
+
 @media (max-width:720px){
   .hero{padding:48px 18px 80px;}
   #searchInput, #homeSearch{padding:16px 100px 16px 18px;}
@@ -417,6 +447,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       <a href="rehber.html">Detaylı Rehber</a>
       <a href="gelecek.html">Gelecek Sürüm</a>
       <a href="topluluk.html">Topluluk Özeti</a>
+      <a href="https://www.reddit.com/r/ex30/" class="external" target="_blank" rel="noopener">Canlı Topluluk</a>
     </div>
   </div>
 </nav>
@@ -435,7 +466,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
     <div class="cat-head">
       <div class="icon-badge"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIyNCIgcj0iOCIgc3Ryb2tlPSIjMGQxYjNkIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMjMgMjRoMTdNMzQgMjR2Nk00MCAyNHY2IiBzdHJva2U9IiM0YzdlZDYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+Cg==" alt=""></div>
       <h2>Hızlı Çözümler</h2>
-      <span class="count">Anasayfada · 14 madde</span>
+      <span class="count">Anasayfada · 23 madde</span>
     </div>
     <ul class="topic-list">
       <li><a href="index.html#hizli">Menzil modu nasıl açılır?</a></li>
@@ -445,7 +476,13 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       <li><a href="index.html#hizli">Dijital anahtar/kart nasıl tanımlanır?</a></li>
       <li><a href="index.html#hizli">Araç alırken nelere dikkat etmeli?</a></li>
       <li><a href="index.html#hizli">Süzülme (Creep) ile One Pedal Drive farkı</a></li>
-      <li><a href="index.html#hizli">Tüm 14 hızlı çözümü gör →</a></li>
+      <li><a href="index.html#hizli">İnternet/GPS bağlantısı sıfırlama (TCAM reset)</a></li>
+      <li><a href="index.html#hizli">Ekranı temizlemeden önce kilitleme</a></li>
+      <li><a href="index.html#hizli">Ekran donması — yeniden başlatma (2 yöntem)</a></li>
+      <li><a href="index.html#hizli">Park Pilot Assist nasıl kullanılır?</a></li>
+      <li><a href="index.html#hizli">Sürerken yanlışlıkla P tuşuna basma uyarısı</a></li>
+      <li><a href="index.html#hizli">ACC'yi doğru açma (stalk vs. "+" tuşu)</a></li>
+      <li><a href="index.html#hizli">Tüm 23 hızlı çözümü gör →</a></li>
     </ul>
   </div>
 

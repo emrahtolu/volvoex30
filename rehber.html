@@ -397,6 +397,36 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
 .level-box p{font-size:12px; color:var(--muted); margin:0;}
 @media (max-width:640px){ .level-row{grid-template-columns:1fr;} }
 
+/* ---------- LIVE / EXTERNAL SOURCE CARD (Reddit link-out) ---------- */
+.navlinks a.external{ display:inline-flex; align-items:center; gap:5px;}
+.navlinks a.external::after{ content:"↗"; font-size:11px; opacity:.7;}
+.live-card{
+  background:linear-gradient(135deg,#fff8ee,#fff);
+  border:1px solid #f0ddb8; border-radius:var(--radius);
+  padding:28px 30px; display:flex; align-items:center; gap:22px; box-shadow:var(--shadow);
+  flex-wrap:wrap;
+}
+.live-card .icon-badge{ width:56px; height:56px; border-radius:16px; background:var(--orange-soft); flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+.live-card .icon-badge img{width:30px; height:30px;}
+.live-card .txt{flex:1; min-width:220px;}
+.live-card h3{font-family:var(--head); font-size:18px; margin:0 0 4px; color:var(--navy);}
+.live-card p{font-size:13.5px; color:var(--muted); margin:0;}
+.live-card .go-btn{
+  background:var(--navy); color:#fff; font-family:var(--sans); font-weight:700; font-size:13.5px;
+  padding:12px 24px; border-radius:100px; text-decoration:none; white-space:nowrap;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.live-card .go-btn:hover{background:var(--navy-2);}
+.live-badge{
+  display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10px;
+  color:#c0762a; text-transform:uppercase; letter-spacing:.05em; font-weight:700; margin-bottom:8px;
+}
+.live-badge .pulse{width:7px; height:7px; border-radius:50%; background:#e8952f; animation:pulse 1.6s infinite;}
+@keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(232,149,47,.5);} 70%{box-shadow:0 0 0 8px rgba(232,149,47,0);} 100%{box-shadow:0 0 0 0 rgba(232,149,47,0);} }
+
+/* Son Gündem entries reuse .roadmap but with a 4th "live" dot color */
+.roadmap-item.live::before{ background:#e8952f; box-shadow:0 0 0 2px #e8952f;}
+
 @media (max-width:720px){
   .hero{padding:48px 18px 80px;}
   #searchInput, #homeSearch{padding:16px 100px 16px 18px;}
@@ -417,6 +447,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       <a href="rehber.html" class="active">Detaylı Rehber</a>
       <a href="gelecek.html">Gelecek Sürüm</a>
       <a href="topluluk.html">Topluluk Özeti</a>
+      <a href="https://www.reddit.com/r/ex30/" class="external" target="_blank" rel="noopener">Canlı Topluluk</a>
     </div>
   </div>
 </nav>
@@ -644,7 +675,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       <span class="tag tag-warn">Geri Çağırma / Güvenlik</span>
       <p>Bu konu hem resmi kaynaklarda hem toplulukta en çok yanlış anlaşılan başlık. Netleştirilmiş hâliyle:</p>
       <ul>
-        <li><strong>Kapsam:</strong> Yaklaşık 40.000 araç — İngiltere'de satılan ~15.000 ve Güney Amerika pazarına giden ~25.000 adet, toplamda.</li>
+        <li><strong>Kapsam:</strong> Volvo'nun forumlarda ve basına yansıyan resmi rakamına göre dünya genelinde <strong>33.777 araç</strong>. Ayrı olarak, ABD'de NHTSA'nın #26V001 kodlu geri çağırması yalnızca 40–45 araç kapsıyor (ABD pazarındaki EX30'ların çoğu farklı tedarikçiden pil kullanıyor); İngiltere'de ~10.400 batarya paketinin 100'den fazla bayiye dağıtılması gerekiyor.</li>
         <li><strong>Neden:</strong> Bu araçlardaki <strong>Sunwoda</strong> marka batarya hücrelerinde "lityum kaplama" (lithium plating) oluşumu, aşırı ısınma/kısa devre riski yaratıyor. Volvo, bildirilen olay oranının etkilenen araçların yaklaşık <strong>%0,02'si</strong> olduğunu açıklamıştı.</li>
         <li><strong>Hangi üretim hattı:</strong> Etkilenen araçlar <strong>Çin'deki Geely fabrikasında</strong> üretilip İngiltere/Güney Amerika pazarına gönderilenler. Belgelenmiş tek gerçek yangın vakası Brezilya'da bir bayi test aracında yaşandı.</li>
         <li><strong>Türkiye'deki araçlar:</strong> <strong>Belçika'nın Gent fabrikasında</strong> AB regülasyonlarına göre üretiliyor ve <strong>CATL veya CALB</strong> marka batarya paketleri kullanıyor — bu geri çağırmanın <strong>tamamen dışında</strong>. Volvo Car Türkiye bunu resmi olarak doğrulamış durumda.</li>

@@ -397,6 +397,36 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
 .level-box p{font-size:12px; color:var(--muted); margin:0;}
 @media (max-width:640px){ .level-row{grid-template-columns:1fr;} }
 
+/* ---------- LIVE / EXTERNAL SOURCE CARD (Reddit link-out) ---------- */
+.navlinks a.external{ display:inline-flex; align-items:center; gap:5px;}
+.navlinks a.external::after{ content:"↗"; font-size:11px; opacity:.7;}
+.live-card{
+  background:linear-gradient(135deg,#fff8ee,#fff);
+  border:1px solid #f0ddb8; border-radius:var(--radius);
+  padding:28px 30px; display:flex; align-items:center; gap:22px; box-shadow:var(--shadow);
+  flex-wrap:wrap;
+}
+.live-card .icon-badge{ width:56px; height:56px; border-radius:16px; background:var(--orange-soft); flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+.live-card .icon-badge img{width:30px; height:30px;}
+.live-card .txt{flex:1; min-width:220px;}
+.live-card h3{font-family:var(--head); font-size:18px; margin:0 0 4px; color:var(--navy);}
+.live-card p{font-size:13.5px; color:var(--muted); margin:0;}
+.live-card .go-btn{
+  background:var(--navy); color:#fff; font-family:var(--sans); font-weight:700; font-size:13.5px;
+  padding:12px 24px; border-radius:100px; text-decoration:none; white-space:nowrap;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.live-card .go-btn:hover{background:var(--navy-2);}
+.live-badge{
+  display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10px;
+  color:#c0762a; text-transform:uppercase; letter-spacing:.05em; font-weight:700; margin-bottom:8px;
+}
+.live-badge .pulse{width:7px; height:7px; border-radius:50%; background:#e8952f; animation:pulse 1.6s infinite;}
+@keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(232,149,47,.5);} 70%{box-shadow:0 0 0 8px rgba(232,149,47,0);} 100%{box-shadow:0 0 0 0 rgba(232,149,47,0);} }
+
+/* Son Gündem entries reuse .roadmap but with a 4th "live" dot color */
+.roadmap-item.live::before{ background:#e8952f; box-shadow:0 0 0 2px #e8952f;}
+
 @media (max-width:720px){
   .hero{padding:48px 18px 80px;}
   #searchInput, #homeSearch{padding:16px 100px 16px 18px;}
@@ -417,6 +447,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       <a href="rehber.html">Detaylı Rehber</a>
       <a href="gelecek.html">Gelecek Sürüm</a>
       <a href="topluluk.html">Topluluk Özeti</a>
+      <a href="https://www.reddit.com/r/ex30/" class="external" target="_blank" rel="noopener">Canlı Topluluk</a>
     </div>
   </div>
 </nav>
@@ -442,7 +473,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
     </div>
     <div class="num">1.8</div>
     <div class="label">Güncel yazılım sürümü</div>
-    <div class="desc">1.9 doğrulanamadı · 2.1 muhtemelen uygulama sürümüyle karışıyor</div>
+    <div class="desc">1.9 şuan için fabrika çıkışlı veya servis tarafından kablolu güncelleme olarak sunulmaktadır.</div>
   </div>
   <div class="stat-card">
     <div class="ring">
@@ -478,7 +509,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
   <div class="qa-search">
     <input type="text" id="qaSearch" placeholder="Kutucuklarda ara: örn. 'lastik', '12V', 'ısıtma'..." oninput="filterQA()">
   </div>
-  <div class="qa-meta" id="qaMeta">14 hızlı çözüm listeleniyor.</div>
+  <div class="qa-meta" id="qaMeta">23 hızlı çözüm listeleniyor.</div>
 
   <div class="qa-grid" id="qaGrid">
 
@@ -587,6 +618,76 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
       </div>
     </details>
 
+    <details class="qa-item" data-kw="internet bağlantı sorunu tcam sıfırlama şebeke gps navigasyon 4g 5g buz çözücü defroster sos">
+      <summary><span class="qa-tag">Bağlantı</span>İnternet/GPS bağlantısı kopuyor, nasıl sıfırlarım? (TCAM reset)</summary>
+      <div class="qa-body">
+        <p>Bu, bağlantı modülünün (TCAM) donması ve resmi Volvo destek sayfalarında belgelenmiş bir prosedürü var:</p>
+        <p>1. Tavan konsolundaki <strong>arka cam buz çözücü (defroster) düğmesine</strong> basılı tutun.<br>
+        2. Tavandaki <strong>SOS ışığı yanıp sönmeye başlayana kadar</strong> (resmi talimat: ~20 saniye) basılı tutmaya devam edin, sonra bırakın.<br>
+        3. ~2 dakika bekleyin — bağlantı modülü yeniden başlar.</p>
+        <p>Topluluk deneyimlerinde bazı araçlarda bu sürenin 30–45 saniyeye kadar çıkabildiği bildiriliyor. Düzelmezse Volvo, <strong>48 saate kadar bekleyip tekrar denemenizi</strong> öneriyor; hâlâ çözülmezse yetkili servise başvurun.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="ekranı nasıl kilitlerim temizleme modu dokunma kilidi ana menü home tuşu">
+      <summary><span class="qa-tag">Ekran</span>Ekranı temizlemeden önce nasıl kilitlerim?</summary>
+      <div class="qa-body">
+        <p>Ana ekranın altındaki <strong>home (ana menü) tuşuna kısa süreli basılı tutun</strong> — bu, "ekran temizleme modu"nu açar: dokunmalar geçici olarak devre dışı kalır, böylece ekrana rastgele basmadan güvenle silebilirsiniz. Aynı tuşa basmaya devam ederseniz mod sona erer ve tam bir ekran yeniden başlatmasına geçilir (aşağıya bakın).</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="aracı ekranı nasıl sıfırlarım yeniden başlatma reboot direksiyon kısayolu donuyor">
+      <summary><span class="qa-tag">Ekran</span>Ekran donuyor/yavaş, nasıl yeniden başlatırım?</summary>
+      <div class="qa-body">
+        <p>İki resmi yöntem var:</p>
+        <p><strong>(a) Home tuşuyla:</strong> Ana ekranın altındaki home tuşuna basılı tutun; önce temizleme modu açılır, basmaya devam edin — ekran kararıp Volvo logosuyla yeniden başlar (~1 dakikadan az sürer).</p>
+        <p><strong>(b) EX30'a özel direksiyon kısayolu:</strong> Araç dururken ve el freni çekiliyken, direksiyondaki <strong>sol taraftaki "−" (azalt) tuşu ile sağ taraftaki "aşağı ok" tuşuna aynı anda ~15 saniye</strong> basılı tutun; ekran kararıp yeniden başlar. Bluetooth, navigasyon veya genel yavaşlık sorunlarında bu yöntem öneriliyor.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="calm surround görünüm nasıl değiştirilir home tuşu direksiyon">
+      <summary><span class="qa-tag">Ekran</span>Calm/Surround görünümü nasıl değiştiririm?</summary>
+      <div class="qa-body">
+        <p>Bazı araçlarda home tuşuna birkaç saniye basılı tutmak görünümü değiştiriyor, ancak topluluk bunun <strong>tutarsız</strong> çalıştığını bildiriyor (bazı kullanıcılarda hiç işe yaramıyor). En güvenilir yöntem: <em>Ayarlar → Kontroller</em>'den direksiyondaki özelleştirilebilir tuşu <strong>"Görünüm" (display view)</strong> fonksiyonuna atamak — tek dokunuşla iki görünüm arasında geçiş yapar.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="park pilot assist nasıl kullanılır otomatik park paralel dik">
+      <summary><span class="qa-tag">Park</span>Park Pilot Assist nasıl kullanılır?</summary>
+      <div class="qa-body">
+        <p>Park görünümünde Park Pilot Assist düğmesine basın; araç yavaş ilerlerken çevredeki uygun boşlukları taramaya başlar ve ekranda vurgular. Uygun bir boşluk seçtiğinizde araç manevrayı (direksiyon, gaz, fren dahil) kendisi yapar — siz çevrenizi gözetlemeye devam etmeli, gerekirse müdahale etmelisiniz. Hem <strong>paralel hem dik park</strong> için, ayrıca <strong>paralel bir boşluktan çıkış</strong> manevrası için de kullanılabilir.</p>
+        <div class="note">Not: Ön park sensörleri (dolayısıyla tam Park Pilot Assist) bazı pazarlarda yalnızca üst donanım seviyesinde (Ultra) bulunuyor olabilir — alt donanımlarda yalnızca arka sensör/kamera olabilir.</div>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="park pilot assist nasıl durdurulur iptal edilir">
+      <summary><span class="qa-tag">Park</span>Park Pilot Assist manevrasını nasıl durdururum?</summary>
+      <div class="qa-body">
+        <p>Ekrandan iptal tuşuna basarak, direksiyonu elle çevirerek, gaz/fren pedalına basarak veya vites değiştirerek istediğiniz an durdurabilirsiniz. Ayrıca şu durumlarda sistem <strong>otomatik olarak duraklıyor</strong>: yola bir engel girerse, kameralardan biri kapanırsa/kirlenirse, bagaj/kaput/kapı açılırsa, dış aynalar katlanırsa veya emniyet kemeriniz çözülürse.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="p tuşu yanlışlıkla basma sürerken park butonu fren tehlike">
+      <summary><span class="qa-tag">Uyarı</span>Sürerken yanlışlıkla P (Park) tuşuna basarsam ne olur?</summary>
+      <div class="qa-body">
+        <p>Topluluk, konsoldaki fiziksel <strong>P tuşunun cam silecek kontrolüyle karıştırılıp sürüş sırasında yanlışlıkla basılabildiğini</strong> ve bunun ani, beklenmedik bir frenlemeye yol açtığını bildiriyor. Özellikle başka bir markadan geçiş yapıyorsanız ilk haftalarda dikkatli olun — düğmenin tam yerini bilinçli olarak öğrenmek işe yarıyor.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="pilot assist direksiyon desteği açma kapama steering assistance ayrı">
+      <summary><span class="qa-tag">Sürüş</span>Pilot Assist'in direksiyon desteğini ayrı kapatabilir miyim?</summary>
+      <div class="qa-body">
+        <p>Evet. Direksiyondaki bir düğmeyle, Pilot Assist aktifken yalnızca <strong>"direksiyon desteğini" (steering assistance)</strong> ayrı açıp kapatabilirsiniz. Kapattığınızda Pilot Assist hız ve mesafe takibine (ACC) devam eder ama direksiyona müdahale etmez — şerit çizgileri bozuksa veya siz tercih ederseniz kullanışlı bir ayrım.</p>
+      </div>
+    </details>
+
+    <details class="qa-item" data-kw="adaptif hız sabitleyici acc nasıl açılır artı tuşu resume kol stalk">
+      <summary><span class="qa-tag">Sürüş</span>Adaptif Hız Sabitleyici'yi (ACC) doğru nasıl açarım?</summary>
+      <div class="qa-body">
+        <p>Sık yapılan bir hata: direksiyondaki <strong>"+" tuşu yalnızca "Resume/Devam Et"</strong> içindir, sistemi ilk kez açmaz. ACC'yi mevcut hızınızda etkinleştirmek için <strong>sağ koldaki (stalk) kolu</strong> kullanmanız gerekiyor. "+" ile açmaya çalışıp "çalışmıyor" sanan çok sayıda kullanıcı bildirildi.</p>
+      </div>
+    </details>
+
   </div>
 
   <div class="section-label"><span class="num-chip">01</span> Kategoriler</div>
@@ -663,7 +764,7 @@ mark{background:#ffe08a; color:inherit; padding:0 2px; border-radius:3px;}
     <article class="card">
       <span class="tag tag-warn">En Çok Yanlış Anlaşılan</span>
       <h3>Batarya geri çağırması Türkiye'yi kapsıyor mu?</h3>
-      <p><strong>Hayır.</strong> Geri çağırma, Sunwoda pilli ve Çin'deki Geely fabrikasında üretilip İngiltere/Güney Amerika'ya gönderilen ~40.000 araçla sınırlı. Türkiye'deki EX30'lar Belçika'nın Gent fabrikasında üretiliyor ve CATL/CALB pilli — kapsamın tamamen dışında. Yine de VIN numaranızla <a href="https://volvootomobil.com.tr/recall/" target="_blank" rel="noopener">volvootomobil.com.tr/recall</a> üzerinden teyit edebilirsiniz.</p>
+      <p><strong>Hayır.</strong> Geri çağırma, Sunwoda (Geely ortak girişimi) pilli ve Çin'deki Geely fabrikasında üretilip esas olarak İngiltere ve Güney Amerika'ya gönderilen dünya genelinde <strong>33.777 araçla</strong> sınırlı. Türkiye'deki EX30'lar Belçika'nın Gent fabrikasında üretiliyor ve CATL/CALB pilli — kapsamın tamamen dışında. Yine de VIN numaranızla <a href="https://volvootomobil.com.tr/recall/" target="_blank" rel="noopener">volvootomobil.com.tr/recall</a> üzerinden teyit edebilirsiniz.</p>
       <a href="rehber.html#sarj" style="font-family:var(--mono); font-size:12px; color:var(--blue); font-weight:600;">Ayrıntılı açıklama →</a>
     </article>
     <article class="card">
